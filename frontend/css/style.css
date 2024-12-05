@@ -1,0 +1,134 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  min-height: 100vh; 
+  overflow-y: auto; 
+}
+
+.container {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 600px;
+  margin: 20px 0; 
+}
+
+h1 {
+  font-size: 50px;
+  border: 2px solid #90c7a6;
+  background: #fff0f6;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.court-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center; 
+}
+
+.time-slot {
+  width: 500px; 
+  height: 200px;
+  border: 2px solid #ff69b4;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff0f6;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.time-slot span {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; 
+  margin-top: 20px;
+  padding: 0 20px; 
+  flex-direction: row;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+  border: none;   
+  border-radius: 20px; 
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display : inline-block;
+}
+
+/* Nút "Đặt sân" */
+.btn-dat-san {
+  background-color: #ffb6c1; 
+}
+
+.btn-dat-san:hover {
+  background-color: #ff85c1; 
+}
+/* Nút "Hoàn tác" */
+.btn-hoan-tac {
+  background-color: #a8d5ba; 
+}
+
+.btn-hoan-tac:hover {
+  background-color: #90c7a6;
+}
+
+.time-slot p {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+}
+.modal input {
+  margin: 10px 0;
+  width: 90%;
+  padding: 8px;
+}
+
+

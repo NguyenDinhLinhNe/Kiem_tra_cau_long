@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Sân Cầu Lông</title>
+    <link rel="stylesheet" href="frontend/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Đặt Sân Cầu Lông</h1>
+        <h2>Chọn khung giờ</h2>
+
+        <div class="court-list">
+            <div class="time-slot">
+              <span>06:00 - 08:00</span>
+              <p>Thời gian đặt sân phù hợp cho buổi sáng</p>
+              <div class="button-group">
+                  <button class="btn-dat-san" onclick="showPromptAndSave('06:00 - 08:00')">Đặt sân</button>
+                  <button class="btn-hoan-tac">Hoàn tác</button>
+              </div>
+            </div>
+            <div class="time-slot">
+                <span>08:00 - 10:00</span>
+                <p>Thời gian đặt sân phù hợp cho buổi sáng</p>
+                <div class="button-group">
+                    <button class="btn-dat-san" onclick="showPromptAndSave('08:00 - 10:00')">Đặt sân</button>
+                    <button class="btn-hoan-tac">Hoàn tác</button>
+                </div>
+            </div>
+            <div class="time-slot">
+                <span>10:00 - 12:00</span>
+                <p>Thời gian đặt sân phù hợp cho buổi sáng</p>
+                <div class="button-group">
+                    <button class="btn-dat-san" onclick="showPromptAndSave('10:00 - 12:00')">Đặt sân</button>
+                    <button class="btn-hoan-tac">Hoàn tác</button>
+                </div>
+            </div>
+            <div class="time-slot">
+                <span>12:00 - 14:00</span>
+                <p>Thời gian đặt sân phù hợp cho buổi sáng</p>
+                <div class="button-group">
+                    <button class="btn-dat-san" onclick="showPromptAndSave('12:00 - 14:00')">Đặt sân</button>
+                    <button class="btn-hoan-tac">Hoàn tác</button>
+                </div>
+            </div>
+            <div class="time-slot">
+                <span>14:00 - 16:00</span>
+                <p>Thời gian đặt sân phù hợp cho buổi sáng</p>
+                <div class="button-group">
+                    <button class="btn-dat-san" onclick="showPromptAndSave('14:00 - 16:00')">Đặt sân</button>
+                    <button class="btn-hoan-tac">Hoàn tác</button>
+                </div>
+            </div>
+            <div class="time-slot">
+                <span>16:00 - 18:00</span>
+                <p>Thời gian đặt sân phù hợp cho buổi sáng</p>
+                <div class="button-group">
+                    <button class="btn-dat-san" onclick="showPromptAndSave('16:00 - 18:00')">Đặt sân</button>
+                    <button class="btn-hoan-tac">Hoàn tác</button>
+                </div>
+            </div>
+            <div class="time-slot">
+                <span>18:00 - 20:00</span>
+                <p>Thời gian đặt sân phù hợp cho buổi sáng</p>
+                <div class="button-group">
+                    <button class="btn-dat-san" onclick="showPromptAndSave('18:00 - 20:00')">Đặt sân</button>
+                    <button class="btn-hoan-tac">Hoàn tác</button>
+                </div>
+            </div>
+            <div class="time-slot">
+                <span>20:00 - 22:00</span>
+                <p>Thời gian đặt sân phù hợp cho buổi sáng</p>
+                <div class="button-group">
+                    <button class="btn-dat-san" onclick="showPromptAndSave('20:00 - 22:00')">Đặt sân</button>
+                    <button class="btn-hoan-tac">Hoàn tác</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <script>
+        async function showPromptAndSave(timeSlot) {
+            // Hiển thị prompt để nhập tên
+            const name = prompt(`Nhập tên của bạn cho khung giờ ${timeSlot}:`);
+            if (!name) {
+                alert("Bạn chưa nhập tên! Đặt sân thất bại.");
+                return;
+            }
+    
+            // Hiển thị prompt để nhập số điện thoại
+            const phone = prompt("Nhập số điện thoại của bạn:");
+            if (!phone) {
+                alert("Bạn chưa nhập số điện thoại! Đặt sân thất bại.");
+                return;
+            }
+    
+            // Gửi thông tin đến API
+            try {
+                const response = await fetch("http://localhost:3000/api/bookings", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        timeSlot: timeSlot,
+                        name: name.trim(),
+                        phone: phone.trim(),
+                    }),
+                });
+    
+                const data = await response.json();
+    
+                if (response.ok) {
+                    alert(`Đặt sân thành công!\n\nThông tin của bạn:\nTên: ${name}\nSố điện thoại: ${phone}\nKhung giờ: ${timeSlot}`);
+                    console.log("Danh sách đặt sân:", data.bookings);
+                } else {
+                    alert(`Đặt sân thất bại: ${data.message}`);
+                }
+            } catch (error) {
+                console.error("Lỗi khi lưu thông tin đặt sân:", error);
+                alert("Đã xảy ra lỗi khi đặt sân. Vui lòng thử lại.");
+            }
+        }
+    </script>
+    
+</body>
+</html>
